@@ -49,14 +49,78 @@
 .hero-deco--1 { font-size: 22rem; top: -5rem; right: -4rem; }
 .hero-deco--2 { font-size: 12rem; bottom: 4%;  left: -3rem; animation: shimmer 8s ease-in-out infinite; }
 
-/* Hummingbird */
-.hero-hummingbird {
+/* Hummingbirds */
+.hero-bird-wrap {
   position: absolute;
-  width: 320px;
-  right: 8%;
-  top: 50%;
-  transform: translateY(-55%);
   pointer-events: none;
+  will-change: transform;
+}
+
+.hero-bird-wrap--1 {
+  width: 310px;
+  right: 3%;
+  top: 50%;
+  animation: birdHover1 4.2s ease-in-out infinite;
+}
+
+.hero-bird-wrap--2 {
+  width: 165px;
+  right: 16%;
+  bottom: 16%;
+  animation: birdHover2 3.8s ease-in-out infinite;
+  animation-delay: -1.9s;
+}
+
+.hero-bird-wrap .bird-svg {
+  display: block;
+  width: 100%;
+  opacity: 0.20;
+  will-change: transform;
+}
+
+.hero-bird-wrap--2 .bird-svg {
+  opacity: 0.13;
+}
+
+/* Wing beat — katana-speed flutter */
+.bird-wings--up {
+  animation: wingToggle 0.12s steps(1) infinite;
+}
+
+.bird-wings--down {
+  animation: wingToggle 0.12s steps(1) infinite reverse;
+}
+
+@keyframes wingToggle {
+  0%, 49.9% { opacity: 1; }
+  50%, 100%  { opacity: 0; }
+}
+
+/* Katana-strike dart: instant thrust, ease-out return */
+.hero-bird-wrap--1 .bird-svg {
+  animation: birdStrike 5.5s linear infinite;
+}
+
+.hero-bird-wrap--2 .bird-svg {
+  animation: birdStrike 5.5s linear infinite;
+  animation-delay: -2.75s;
+}
+
+@keyframes birdHover1 {
+  0%, 100% { transform: translateY(-50%); }
+  50%      { transform: translateY(calc(-50% - 14px)); }
+}
+
+@keyframes birdHover2 {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@keyframes birdStrike {
+  0%, 87%  { transform: translateX(0); }
+  88%      { transform: translateX(-44px); animation-timing-function: ease-out; }
+  94%      { transform: translateX(0); }
+  100%     { transform: translateX(0); }
 }
 
 /* Content */
@@ -231,7 +295,7 @@
 }
 
 @media (max-width: 768px) {
-  .hero-hummingbird { display: none; }
+  .hero-bird-wrap { display: none; }
   .hero-deco--1 { font-size: 12rem; }
   .hero-stats { padding: 20px 24px; gap: 20px; }
 }
