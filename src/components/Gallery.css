@@ -1,0 +1,214 @@
+/* ─── Gallery ────────────────────────────────────────────────────────────── */
+.gallery {
+  position: relative;
+  padding: var(--section-gap) 24px;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.gallery::before {
+  content: '芸';
+  font-family: var(--font-japanese);
+  font-size: 30rem;
+  color: rgba(201, 168, 76, 0.025);
+  position: absolute;
+  top: -5rem;
+  left: -4rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.gallery-container {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* Header */
+.gallery-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.gallery-heading {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-top: 16px;
+}
+
+.gallery-heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-light);
+}
+
+/* Filters */
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.filter-glass {
+  display: inline-block !important;
+}
+
+.filter-btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  background: transparent;
+  color: rgba(245, 239, 230, 0.6);
+  transition: color 0.25s;
+  white-space: nowrap;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  color: var(--gold-light);
+}
+
+/* Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+/* Card */
+.gallery-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: transform 0.35s var(--ease), border-color 0.35s;
+  cursor: pointer;
+}
+
+.gallery-card:hover,
+.gallery-card.hovered {
+  transform: translateY(-6px);
+  border-color: rgba(201, 168, 76, 0.4);
+}
+
+.card-visual {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--card-color) 15%, var(--surface)), var(--surface));
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-kanji-bg {
+  position: absolute;
+  font-family: var(--font-japanese);
+  font-size: 9rem;
+  color: rgba(255,255,255,0.04);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+.card-illus {
+  width: 130px;
+  height: 130px;
+  z-index: 1;
+  transition: transform 0.4s var(--ease);
+}
+
+.gallery-card.hovered .card-illus {
+  transform: scale(1.08);
+}
+
+/* Hover overlay */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,13,26,0.92) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.gallery-card.hovered .card-overlay {
+  opacity: 1;
+}
+
+.card-style {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.card-desc {
+  font-size: 0.85rem;
+  color: rgba(245, 239, 230, 0.75);
+  line-height: 1.5;
+}
+
+/* Card info */
+.card-info {
+  padding: 14px 16px;
+}
+
+.card-category {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--cream);
+  margin-top: 4px;
+}
+
+/* CTA */
+.gallery-cta {
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-cta-glass {
+  display: inline-block !important;
+}
+
+.gallery-cta-btn {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  padding: 16px 48px;
+  background: var(--vermillion);
+  color: var(--cream);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.gallery-cta-btn:hover { opacity: 0.88; }
+
+@media (max-width: 900px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 540px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+}
