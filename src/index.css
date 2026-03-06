@@ -7,11 +7,11 @@
 }
 
 :root {
-  /* Palette – Japanese Vintage */
-  --ink:         #0d0d1a;
-  --deep:        #12121f;
-  --surface:     #1a1a2e;
-  --panel:       rgba(26, 26, 46, 0.75);
+  /* Palette – Modern Oriental */
+  --ink:         #0a0a14;
+  --deep:        #0f0f1c;
+  --surface:     #161625;
+  --panel:       rgba(22, 22, 37, 0.65);
   --washi:       #f5efe6;
   --cream:       #faf6f0;
   --vermillion:  #c0392b;
@@ -19,8 +19,14 @@
   --gold:        #c9a84c;
   --gold-light:  #e8cc82;
   --teal:        #1c3557;
-  --mist:        rgba(245, 239, 230, 0.07);
-  --border:      rgba(201, 168, 76, 0.25);
+  --mist:        rgba(245, 239, 230, 0.04);
+  --border:      rgba(201, 168, 76, 0.18);
+
+  /* Glassmorphism */
+  --glass-bg:    rgba(22, 22, 37, 0.45);
+  --glass-border: rgba(245, 239, 230, 0.08);
+  --glass-blur:  20px;
+  --glass-shine: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%, rgba(255,255,255,0.02) 100%);
 
   /* Typography */
   --font-display:  'Noto Serif JP', serif;
@@ -95,7 +101,7 @@ body {
 .divider-kanji {
   font-family: var(--font-japanese);
   font-size: 5rem;
-  color: rgba(201, 168, 76, 0.06);
+  color: rgba(201, 168, 76, 0.04);
   position: absolute;
   right: 0;
   pointer-events: none;
@@ -103,12 +109,32 @@ body {
   line-height: 1;
 }
 
+/* ─── Glassmorphism Panel ─────────────────────────────────────────────────── */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-shine);
+  pointer-events: none;
+}
+
 /* ─── Pattern Backgrounds ─────────────────────────────────────────────────── */
 .seigaiha-bg {
   background-image:
-    radial-gradient(circle at 0 50%, transparent 19px, rgba(201,168,76,0.04) 20px, rgba(201,168,76,0.04) 21px, transparent 22px),
-    radial-gradient(circle at 100% 50%, transparent 19px, rgba(201,168,76,0.04) 20px, rgba(201,168,76,0.04) 21px, transparent 22px),
-    radial-gradient(circle at 50% 100%, transparent 19px, rgba(201,168,76,0.04) 20px, rgba(201,168,76,0.04) 21px, transparent 22px);
+    radial-gradient(circle at 0 50%, transparent 19px, rgba(201,168,76,0.025) 20px, rgba(201,168,76,0.025) 21px, transparent 22px),
+    radial-gradient(circle at 100% 50%, transparent 19px, rgba(201,168,76,0.025) 20px, rgba(201,168,76,0.025) 21px, transparent 22px),
+    radial-gradient(circle at 50% 100%, transparent 19px, rgba(201,168,76,0.025) 20px, rgba(201,168,76,0.025) 21px, transparent 22px);
   background-size: 40px 40px;
 }
 

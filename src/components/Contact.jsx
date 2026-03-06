@@ -1,11 +1,9 @@
-import { useState, useRef } from 'react'
-import LiquidGlass from 'liquid-glass-react'
+import { useState } from 'react'
 import './Contact.css'
 
 const styleOptions = ['Tradicional Japonês', 'Neo-Tradicional', 'Blackwork', 'Realismo', 'Geométrico', 'Outro']
 
 export default function Contact() {
-  const containerRef = useRef(null)
   const [form, setForm] = useState({
     name: '',
     contact: '',
@@ -27,7 +25,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contato" className="contact" ref={containerRef}>
+    <section id="contato" className="contact">
       <div className="contact-container">
         {/* Info side */}
         <div className="contact-info">
@@ -62,18 +60,9 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Form side */}
+        {/* Form side — CSS glassmorphism */}
         <div className="contact-form-wrap">
-          <LiquidGlass
-            mouseContainer={containerRef}
-            displacementScale={35}
-            blurAmount={0.1}
-            saturation={125}
-            aberrationIntensity={1.2}
-            elasticity={0.15}
-            cornerRadius={24}
-            className="contact-glass"
-          >
+          <div className="contact-glass-panel glass-panel">
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
               <h3 className="form-title">Agendar Consulta</h3>
 
@@ -134,21 +123,9 @@ export default function Contact() {
                 />
               </div>
 
-              <LiquidGlass
-                mouseContainer={containerRef}
-                displacementScale={48}
-                blurAmount={0.08}
-                saturation={135}
-                aberrationIntensity={1.8}
-                elasticity={0.25}
-                cornerRadius={999}
-                padding="0"
-                className="submit-glass"
-              >
-                <button type="submit" className="submit-btn">
-                  {sent ? '✓ Mensagem enviada!' : 'Enviar →'}
-                </button>
-              </LiquidGlass>
+              <button type="submit" className="submit-btn">
+                {sent ? '✓ Mensagem enviada!' : 'Enviar →'}
+              </button>
 
               {sent && (
                 <p className="form-success">
@@ -156,7 +133,7 @@ export default function Contact() {
                 </p>
               )}
             </form>
-          </LiquidGlass>
+          </div>
         </div>
       </div>
     </section>

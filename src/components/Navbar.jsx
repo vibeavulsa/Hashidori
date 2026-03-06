@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react'
-import LiquidGlass from 'liquid-glass-react'
 import './Navbar.css'
 
 const links = [
@@ -28,51 +27,40 @@ export default function Navbar() {
 
   return (
     <header ref={containerRef} className={`navbar-wrap ${scrolled ? 'scrolled' : ''}`}>
-      <LiquidGlass
-        mouseContainer={containerRef}
-        displacementScale={40}
-        blurAmount={0.12}
-        saturation={130}
-        aberrationIntensity={1.5}
-        elasticity={0.2}
-        cornerRadius={999}
-        className="navbar-glass"
-      >
-        <nav className="navbar-inner">
-          {/* Logo */}
-          <a href="#hero" className="navbar-logo" onClick={e => handleLink(e, '#hero')}>
-            <span className="logo-kanji">橋鳥</span>
-            <span className="logo-romaji">Hashidori</span>
-          </a>
+      <nav className="navbar-inner glass-panel">
+        {/* Logo */}
+        <a href="#hero" className="navbar-logo" onClick={e => handleLink(e, '#hero')}>
+          <span className="logo-kanji">橋鳥</span>
+          <span className="logo-romaji">Hashidori</span>
+        </a>
 
-          {/* Desktop links */}
-          <ul className="navbar-links">
-            {links.map(l => (
-              <li key={l.href}>
-                <a href={l.href} onClick={e => handleLink(e, l.href)}>{l.label}</a>
-              </li>
-            ))}
-          </ul>
+        {/* Desktop links */}
+        <ul className="navbar-links">
+          {links.map(l => (
+            <li key={l.href}>
+              <a href={l.href} onClick={e => handleLink(e, l.href)}>{l.label}</a>
+            </li>
+          ))}
+        </ul>
 
-          {/* CTA */}
-          <a
-            href="#contato"
-            className="navbar-cta"
-            onClick={e => handleLink(e, '#contato')}
-          >
-            Agendar
-          </a>
+        {/* CTA */}
+        <a
+          href="#contato"
+          className="navbar-cta"
+          onClick={e => handleLink(e, '#contato')}
+        >
+          Agendar
+        </a>
 
-          {/* Hamburger */}
-          <button
-            className={`hamburger ${menuOpen ? 'open' : ''}`}
-            onClick={() => setMenuOpen(v => !v)}
-            aria-label="Menu"
-          >
-            <span /><span /><span />
-          </button>
-        </nav>
-      </LiquidGlass>
+        {/* Hamburger */}
+        <button
+          className={`hamburger ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen(v => !v)}
+          aria-label="Menu"
+        >
+          <span /><span /><span />
+        </button>
+      </nav>
 
       {/* Mobile menu */}
       {menuOpen && (

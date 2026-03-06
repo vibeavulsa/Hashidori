@@ -31,10 +31,9 @@ export default function About() {
         <div className="about-visual">
           <div className="about-portrait-frame">
             <div className="about-portrait-inner">
-              {/* Koi fish SVG illustration */}
-              <KoiIllustration />
+              <EnsoIllustration />
             </div>
-            <div className="about-portrait-badge">
+            <div className="about-portrait-badge glass-panel">
               <span className="badge-kanji">橋鳥</span>
               <span className="badge-text">Est. 2016</span>
             </div>
@@ -53,7 +52,7 @@ export default function About() {
           <p className="about-body">
             Sou Jean Carlos, tatuador apaixonado pela arte japonesa tradicional há mais de
             8 anos. Minha marca,{' '}
-            <strong>橋鳥 Hashidori</strong> — &quot;o pássaro da ponte&quot; —, nasce da
+            <strong>橋鳥 Hashidori</strong> — &quot;o beija-flor&quot; —, nasce da
             crença de que a tatuagem é uma ponte entre o mundo interior e a pele visível,
             entre o passado ancestral e o presente vivo.
           </p>
@@ -67,7 +66,7 @@ export default function About() {
           {/* Values grid */}
           <div className="about-values">
             {values.map(v => (
-              <div key={v.kanji} className="value-card">
+              <div key={v.kanji} className="value-card glass-panel">
                 <span className="value-kanji">{v.kanji}</span>
                 <div>
                   <strong>{v.label}</strong>
@@ -87,76 +86,75 @@ export default function About() {
   )
 }
 
-function KoiIllustration() {
+function EnsoIllustration() {
   return (
     <svg viewBox="0 0 300 380" fill="none" xmlns="http://www.w3.org/2000/svg" className="koi-svg">
-      {/* Water waves background */}
-      {[0,1,2,3,4,5].map(i => (
+      {/* Ensō circle — the quintessential zen symbol */}
+      <circle
+        cx="150" cy="170" r="100"
+        stroke="var(--gold)"
+        strokeWidth="6"
+        fill="none"
+        opacity="0.2"
+        strokeLinecap="round"
+        strokeDasharray="580 50"
+      />
+      <circle
+        cx="150" cy="170" r="100"
+        stroke="var(--gold)"
+        strokeWidth="2"
+        fill="none"
+        opacity="0.08"
+        strokeLinecap="round"
+      />
+
+      {/* Hummingbird silhouette inside the ensō */}
+      <g transform="translate(110, 120)" opacity="0.5">
+        {/* Body */}
         <path
-          key={i}
-          d={`M0 ${60 + i*55} Q75 ${45 + i*55} 150 ${60 + i*55} Q225 ${75 + i*55} 300 ${60 + i*55}`}
-          stroke="rgba(28,53,87,0.4)"
-          strokeWidth="1.5"
-          fill="none"
+          d="M45 15 C55 25 60 45 55 70 C52 82 44 90 40 95 C36 90 28 82 25 70 C20 45 25 25 35 15 C38 11 42 11 45 15Z"
+          fill="var(--vermillion)"
         />
-      ))}
-
-      {/* Koi body */}
-      <ellipse cx="150" cy="190" rx="55" ry="130" fill="var(--vermillion)" opacity="0.85" transform="rotate(-15 150 190)" />
-      <ellipse cx="155" cy="190" rx="48" ry="118" fill="#e05840" opacity="0.6" transform="rotate(-15 155 190)" />
-
-      {/* White koi markings */}
-      <ellipse cx="148" cy="155" rx="22" ry="30" fill="var(--cream)" opacity="0.5" transform="rotate(-15 148 155)" />
-      <ellipse cx="158" cy="220" rx="18" ry="24" fill="var(--cream)" opacity="0.35" transform="rotate(-15 158 220)" />
-
-      {/* Scales */}
-      {[[140,140],[155,155],[145,170],[160,185],[148,200],[162,215]].map(([x,y],i) => (
+        {/* Right wing */}
         <path
-          key={i}
-          d={`M${x} ${y} Q${x+8} ${y-8} ${x+16} ${y}`}
-          stroke="rgba(201,168,76,0.4)"
-          strokeWidth="1"
-          fill="none"
+          d="M55 35 C72 22 90 18 105 22 C92 30 72 42 58 48Z"
+          fill="var(--vermillion)"
+          opacity="0.6"
         />
-      ))}
+        {/* Left wing */}
+        <path
+          d="M25 35 C8 22 -10 18 -25 22 C-12 30 8 42 22 48Z"
+          fill="var(--vermillion)"
+          opacity="0.6"
+        />
+        {/* Beak */}
+        <path d="M40 12 L40 -8 L42 12Z" fill="var(--gold)" opacity="0.7" />
+        {/* Tail */}
+        <path
+          d="M40 95 C36 108 32 120 28 130 C35 122 40 112 40 105 C40 112 45 122 52 130 C48 120 44 108 40 95Z"
+          fill="var(--vermillion)"
+          opacity="0.4"
+        />
+      </g>
 
-      {/* Tail fin */}
-      <path d="M120 290 Q140 320 160 290 Q180 260 160 270 Q140 280 120 290Z"
-        fill="var(--vermillion)" opacity="0.7" />
-      <path d="M162 290 Q182 330 195 300 Q185 275 162 290Z"
-        fill="#c0392b" opacity="0.5" />
+      {/* Kanji — 鳥 (bird) below the ensō */}
+      <text
+        x="150" y="330"
+        textAnchor="middle"
+        fontFamily="var(--font-japanese)"
+        fontSize="36"
+        fill="var(--gold)"
+        opacity="0.12"
+      >
+        鳥
+      </text>
 
-      {/* Pectoral fins */}
-      <path d="M105 185 Q85 175 90 160 Q100 165 115 178Z"
-        fill="var(--gold)" opacity="0.6" />
-      <path d="M185 200 Q208 188 205 173 Q194 180 180 195Z"
-        fill="var(--gold)" opacity="0.4" />
-
-      {/* Eye */}
-      <circle cx="148" cy="112" r="8" fill="var(--ink)" />
-      <circle cx="148" cy="112" r="6" fill="#2a2a3a" />
-      <circle cx="149" cy="111" r="2.5" fill="var(--gold)" opacity="0.9" />
-      <circle cx="150.5" cy="110" r="1" fill="var(--cream)" opacity="0.8" />
-
-      {/* Cherry blossom petals (floating) */}
+      {/* Subtle cherry blossom petals */}
       {[
-        [40, 60, 0], [250, 90, 15], [60, 260, -10],
-        [230, 290, 20], [270, 180, -5],
-      ].map(([x, y, rot], i) => (
-        <g key={i} transform={`translate(${x},${y}) rotate(${rot})`} opacity="0.5">
-          <circle cx="0" cy="-7" r="5" fill="#ffb7c5" />
-          <circle cx="6.6" cy="-2.2" r="5" fill="#ffb7c5" />
-          <circle cx="4.1" cy="5.8" r="5" fill="#ffb7c5" />
-          <circle cx="-4.1" cy="5.8" r="5" fill="#ffb7c5" />
-          <circle cx="-6.6" cy="-2.2" r="5" fill="#ffb7c5" />
-          <circle cx="0" cy="0" r="3" fill="#ff8fa3" />
-        </g>
+        [50, 80, 0.3], [240, 100, 0.25], [60, 280, 0.2],
+      ].map(([x, y, op], i) => (
+        <circle key={i} cx={x} cy={y} r="3" fill="var(--vermillion)" opacity={op} />
       ))}
-
-      {/* Gold water rings */}
-      <circle cx="80"  cy="310" r="18" stroke="var(--gold)" strokeWidth="0.8" fill="none" opacity="0.3" />
-      <circle cx="80"  cy="310" r="30" stroke="var(--gold)" strokeWidth="0.5" fill="none" opacity="0.15" />
-      <circle cx="220" cy="70"  r="12" stroke="var(--gold)" strokeWidth="0.8" fill="none" opacity="0.3" />
     </svg>
   )
 }

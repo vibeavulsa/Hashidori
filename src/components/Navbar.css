@@ -13,15 +13,13 @@
   top: 12px;
 }
 
-.navbar-glass {
-  width: 100% !important;
-}
-
 .navbar-inner {
   display: flex;
   align-items: center;
   gap: 32px;
-  padding: 10px 20px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  position: relative;
 }
 
 /* Logo */
@@ -91,7 +89,7 @@
   font-size: 0.85rem;
   letter-spacing: 0.1em;
   color: var(--gold);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
   padding: 6px 18px;
   border-radius: 999px;
   text-decoration: none;
@@ -136,8 +134,11 @@
   top: calc(var(--nav-h) + 20px);
   left: 16px;
   right: 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   border-radius: 16px;
   padding: 24px;
   display: flex;
@@ -153,11 +154,11 @@
   color: var(--washi);
   text-decoration: none;
   padding: 4px 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .mobile-menu a:last-child { border-bottom: none; }
-.mobile-menu .navbar-cta { text-align: center; margin-top: 8px; border: 1px solid var(--border); }
+.mobile-menu .navbar-cta { text-align: center; margin-top: 8px; border: 1px solid var(--glass-border); }
 
 @media (max-width: 700px) {
   .navbar-links, .navbar-cta { display: none; }
