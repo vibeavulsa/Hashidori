@@ -21,14 +21,12 @@ export default function Hero() {
       <div className="hero-bg-layer hero-waves" aria-hidden="true" />
       <div className="hero-bg-layer hero-gradient" aria-hidden="true" />
 
-      {/* Floating kanji decorations */}
-      <span className="hero-deco hero-deco--1" aria-hidden="true">龍</span>
+      {/* Floating kanji — subtle, single accent */}
+      <span className="hero-deco hero-deco--1" aria-hidden="true">鳥</span>
       <span className="hero-deco hero-deco--2" aria-hidden="true">花</span>
-      <span className="hero-deco hero-deco--3" aria-hidden="true">波</span>
-      <span className="hero-deco hero-deco--4" aria-hidden="true">風</span>
 
-      {/* Crane SVG */}
-      <CraneSVG className="hero-crane" />
+      {/* Hummingbird SVG */}
+      <HummingbirdSVG className="hero-hummingbird" />
 
       {/* Content card */}
       <div className="hero-content fade-up">
@@ -52,11 +50,11 @@ export default function Hero() {
         <div className="hero-actions">
           <LiquidGlass
             mouseContainer={containerRef}
-            displacementScale={55}
-            blurAmount={0.08}
-            saturation={140}
-            aberrationIntensity={2}
-            elasticity={0.3}
+            displacementScale={30}
+            blurAmount={0.05}
+            saturation={120}
+            aberrationIntensity={1}
+            elasticity={0.15}
             cornerRadius={999}
             padding="0"
             onClick={scrollToPortfolio}
@@ -69,11 +67,11 @@ export default function Hero() {
 
           <LiquidGlass
             mouseContainer={containerRef}
-            displacementScale={40}
-            blurAmount={0.04}
-            saturation={120}
-            aberrationIntensity={1}
-            elasticity={0.2}
+            displacementScale={20}
+            blurAmount={0.03}
+            saturation={110}
+            aberrationIntensity={0.6}
+            elasticity={0.15}
             cornerRadius={999}
             padding="0"
             onClick={scrollToContact}
@@ -85,8 +83,8 @@ export default function Hero() {
           </LiquidGlass>
         </div>
 
-        {/* Stats */}
-        <div className="hero-stats">
+        {/* Stats — glassmorphism panel */}
+        <div className="hero-stats glass-panel">
           <div className="hero-stat">
             <strong>8+</strong>
             <span>Anos de experiência</span>
@@ -113,7 +111,7 @@ export default function Hero() {
   )
 }
 
-function CraneSVG({ className }) {
+function HummingbirdSVG({ className }) {
   return (
     <svg
       className={className}
@@ -122,36 +120,38 @@ function CraneSVG({ className }) {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      {/* Origami crane silhouette */}
-      <g opacity="0.15">
+      <g opacity="0.12">
+        {/* Body */}
         <path
-          d="M200 80 L280 180 L320 160 L260 240 L340 260 L240 280 L260 380 L200 340 L140 380 L160 280 L60 260 L140 240 L80 160 L120 180 Z"
+          d="M220 160 C240 180 250 220 240 270 C235 295 215 320 200 340 C185 320 165 295 160 270 C150 220 160 180 180 160 C190 148 210 148 220 160Z"
           fill="var(--gold)"
-          stroke="var(--gold)"
-          strokeWidth="1.5"
-          strokeLinejoin="round"
         />
+        {/* Right wing — swept back elegantly */}
         <path
-          d="M200 80 L200 340"
-          stroke="var(--gold)"
-          strokeWidth="0.5"
-          opacity="0.5"
+          d="M240 200 C280 170 330 150 370 160 C340 180 290 210 250 230Z"
+          fill="var(--gold)"
+          opacity="0.7"
         />
-        {/* Wing details */}
+        {/* Left wing */}
         <path
-          d="M200 200 L140 240 L160 280"
-          stroke="var(--gold)"
-          strokeWidth="0.5"
-          opacity="0.4"
+          d="M160 200 C120 170 70 150 30 160 C60 180 110 210 150 230Z"
+          fill="var(--gold)"
+          opacity="0.7"
         />
+        {/* Long beak */}
         <path
-          d="M200 200 L260 240 L240 280"
-          stroke="var(--gold)"
-          strokeWidth="0.5"
-          opacity="0.4"
+          d="M200 155 L200 100 L203 155Z"
+          fill="var(--gold)"
+          opacity="0.8"
         />
-        {/* Head */}
-        <circle cx="200" cy="72" r="10" fill="var(--vermillion)" opacity="0.6" />
+        {/* Tail feathers */}
+        <path
+          d="M200 340 C190 370 180 410 170 440 C185 420 200 400 200 380 C200 400 215 420 230 440 C220 410 210 370 200 340Z"
+          fill="var(--gold)"
+          opacity="0.6"
+        />
+        {/* Eye */}
+        <circle cx="193" cy="168" r="4" fill="var(--vermillion)" opacity="0.6" />
       </g>
     </svg>
   )

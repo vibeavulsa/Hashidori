@@ -66,11 +66,11 @@ export default function Contact() {
         <div className="contact-form-wrap">
           <LiquidGlass
             mouseContainer={containerRef}
-            displacementScale={35}
-            blurAmount={0.1}
-            saturation={125}
-            aberrationIntensity={1.2}
-            elasticity={0.15}
+            displacementScale={20}
+            blurAmount={0.06}
+            saturation={115}
+            aberrationIntensity={0.8}
+            elasticity={0.12}
             cornerRadius={24}
             className="contact-glass"
           >
@@ -136,11 +136,11 @@ export default function Contact() {
 
               <LiquidGlass
                 mouseContainer={containerRef}
-                displacementScale={48}
-                blurAmount={0.08}
-                saturation={135}
-                aberrationIntensity={1.8}
-                elasticity={0.25}
+                displacementScale={25}
+                blurAmount={0.05}
+                saturation={115}
+                aberrationIntensity={1}
+                elasticity={0.15}
                 cornerRadius={999}
                 padding="0"
                 className="submit-glass"

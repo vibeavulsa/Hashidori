@@ -30,11 +30,11 @@ export default function Navbar() {
     <header ref={containerRef} className={`navbar-wrap ${scrolled ? 'scrolled' : ''}`}>
       <LiquidGlass
         mouseContainer={containerRef}
-        displacementScale={40}
-        blurAmount={0.12}
-        saturation={130}
-        aberrationIntensity={1.5}
-        elasticity={0.2}
+        displacementScale={25}
+        blurAmount={0.08}
+        saturation={115}
+        aberrationIntensity={0.8}
+        elasticity={0.15}
         cornerRadius={999}
         className="navbar-glass"
       >
