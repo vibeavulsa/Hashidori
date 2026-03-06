@@ -126,9 +126,10 @@
   font-style: italic;
 }
 
-/* Form */
-.contact-glass {
-  width: 100% !important;
+/* Form — glassmorphism panel */
+.contact-glass-panel {
+  border-radius: 24px;
+  position: relative;
 }
 
 .contact-form {
@@ -207,11 +208,6 @@
 }
 
 /* Submit */
-.submit-glass {
-  display: block !important;
-  width: 100% !important;
-}
-
 .submit-btn {
   width: 100%;
   font-family: var(--font-body);

@@ -50,27 +50,31 @@
   margin-bottom: 48px;
 }
 
-.filter-glass {
-  display: inline-block !important;
-}
-
 .filter-btn {
   font-family: var(--font-body);
   font-size: 0.85rem;
   letter-spacing: 0.05em;
-  padding: 8px 20px;
-  border: none;
+  padding: 8px 22px;
+  border: 1px solid transparent;
   border-radius: 999px;
   cursor: pointer;
   background: transparent;
-  color: rgba(245, 239, 230, 0.5);
-  transition: color 0.25s;
+  color: rgba(245, 239, 230, 0.45);
+  transition: color 0.25s, border-color 0.25s, background 0.25s;
   white-space: nowrap;
 }
 
-.filter-btn.active,
 .filter-btn:hover {
   color: var(--gold-light);
+  border-color: var(--glass-border);
+}
+
+.filter-btn.active {
+  color: var(--gold-light);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: var(--glass-border);
 }
 
 /* Grid */
@@ -181,10 +185,6 @@
 .gallery-cta {
   display: flex;
   justify-content: center;
-}
-
-.gallery-cta-glass {
-  display: inline-block !important;
 }
 
 .gallery-cta-btn {

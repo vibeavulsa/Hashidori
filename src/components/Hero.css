@@ -126,10 +126,6 @@
   margin-bottom: 48px;
 }
 
-.hero-btn-glass {
-  display: inline-block !important;
-}
-
 .hero-btn {
   font-family: var(--font-body);
   font-size: 0.95rem;
@@ -137,7 +133,7 @@
   border: none;
   cursor: pointer;
   border-radius: 999px;
-  transition: transform 0.2s, opacity 0.2s;
+  transition: transform 0.2s, opacity 0.2s, background 0.3s;
   white-space: nowrap;
 }
 
@@ -149,13 +145,22 @@
   padding: 14px 36px;
 }
 
+.hero-btn--primary:hover {
+  opacity: 0.9;
+}
+
 .hero-btn--secondary {
-  background: transparent;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   color: var(--gold-light);
   border: 1px solid var(--glass-border);
   padding: 14px 36px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+}
+
+.hero-btn--secondary:hover {
+  background: rgba(245, 239, 230, 0.08);
+  border-color: rgba(245, 239, 230, 0.15);
 }
 
 /* Stats — glassmorphism */

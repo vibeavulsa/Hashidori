@@ -1,5 +1,4 @@
-import { useState, useRef } from 'react'
-import LiquidGlass from 'liquid-glass-react'
+import { useState } from 'react'
 import './Gallery.css'
 
 const categories = ['Todos', 'Dragão', 'Koi', 'Flores', 'Geométrico', 'Gueixa']
@@ -90,12 +89,11 @@ const works = [
 
 export default function Gallery() {
   const [active, setActive] = useState('Todos')
-  const containerRef = useRef(null)
 
   const filtered = active === 'Todos' ? works : works.filter(w => w.category === active)
 
   return (
-    <section id="portifolio" className="gallery" ref={containerRef}>
+    <section id="portifolio" className="gallery">
       <div className="gallery-container">
         {/* Header */}
         <div className="gallery-header">
@@ -106,29 +104,16 @@ export default function Gallery() {
           </h2>
         </div>
 
-        {/* Filter tabs using LiquidGlass */}
+        {/* Filter tabs — CSS glassmorphism */}
         <div className="gallery-filters">
           {categories.map(cat => (
-            <LiquidGlass
+            <button
               key={cat}
-              mouseContainer={containerRef}
-              displacementScale={active === cat ? 25 : 15}
-              blurAmount={active === cat ? 0.06 : 0.03}
-              saturation={active === cat ? 120 : 105}
-              aberrationIntensity={active === cat ? 0.8 : 0.4}
-              elasticity={0.15}
-              cornerRadius={999}
-              padding="0"
+              className={`filter-btn ${active === cat ? 'active' : ''}`}
               onClick={() => setActive(cat)}
-              className="filter-glass"
             >
-              <button
-                className={`filter-btn ${active === cat ? 'active' : ''}`}
-                onClick={() => setActive(cat)}
-              >
-                {cat}
-              </button>
-            </LiquidGlass>
+              {cat}
+            </button>
           ))}
         </div>
 
@@ -141,25 +126,12 @@ export default function Gallery() {
 
         {/* CTA */}
         <div className="gallery-cta">
-          <LiquidGlass
-            mouseContainer={containerRef}
-            displacementScale={30}
-            blurAmount={0.06}
-            saturation={120}
-            aberrationIntensity={1}
-            elasticity={0.15}
-            cornerRadius={999}
-            padding="0"
+          <button
+            className="gallery-cta-btn"
             onClick={() => document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' })}
-            className="gallery-cta-glass"
           >
-            <button
-              className="gallery-cta-btn"
-              onClick={() => document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Quero minha peça exclusiva →
-            </button>
-          </LiquidGlass>
+            Quero minha peça exclusiva →
+          </button>
         </div>
       </div>
     </section>

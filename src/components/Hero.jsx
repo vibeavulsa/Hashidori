@@ -1,5 +1,4 @@
 import { useRef } from 'react'
-import LiquidGlass from 'liquid-glass-react'
 import './Hero.css'
 
 export default function Hero() {
@@ -48,39 +47,12 @@ export default function Hero() {
         </p>
 
         <div className="hero-actions">
-          <LiquidGlass
-            mouseContainer={containerRef}
-            displacementScale={30}
-            blurAmount={0.05}
-            saturation={120}
-            aberrationIntensity={1}
-            elasticity={0.15}
-            cornerRadius={999}
-            padding="0"
-            onClick={scrollToPortfolio}
-            className="hero-btn-glass"
-          >
-            <button className="hero-btn hero-btn--primary" onClick={scrollToPortfolio}>
-              Ver Portifólio
-            </button>
-          </LiquidGlass>
-
-          <LiquidGlass
-            mouseContainer={containerRef}
-            displacementScale={20}
-            blurAmount={0.03}
-            saturation={110}
-            aberrationIntensity={0.6}
-            elasticity={0.15}
-            cornerRadius={999}
-            padding="0"
-            onClick={scrollToContact}
-            className="hero-btn-glass"
-          >
-            <button className="hero-btn hero-btn--secondary" onClick={scrollToContact}>
-              Agendar Sessão
-            </button>
-          </LiquidGlass>
+          <button className="hero-btn hero-btn--primary" onClick={scrollToPortfolio}>
+            Ver Portifólio
+          </button>
+          <button className="hero-btn hero-btn--secondary" onClick={scrollToContact}>
+            Agendar Sessão
+          </button>
         </div>
 
         {/* Stats — glassmorphism panel */}
