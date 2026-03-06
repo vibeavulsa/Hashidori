@@ -24,8 +24,13 @@ export default function Hero() {
       <span className="hero-deco hero-deco--1" aria-hidden="true">鳥</span>
       <span className="hero-deco hero-deco--2" aria-hidden="true">花</span>
 
-      {/* Hummingbird SVG */}
-      <HummingbirdSVG className="hero-hummingbird" />
+      {/* Hummingbirds */}
+      <div className="hero-bird-wrap hero-bird-wrap--1">
+        <HummingbirdSVG />
+      </div>
+      <div className="hero-bird-wrap hero-bird-wrap--2">
+        <HummingbirdSVG />
+      </div>
 
       {/* Content card */}
       <div className="hero-content fade-up">
@@ -83,48 +88,64 @@ export default function Hero() {
   )
 }
 
-function HummingbirdSVG({ className }) {
+function HummingbirdSVG() {
   return (
     <svg
-      className={className}
-      viewBox="0 0 400 500"
+      className="bird-svg"
+      viewBox="0 0 380 280"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <g opacity="0.12">
-        {/* Body */}
+      {/* Wings — UP beat */}
+      <g className="bird-wings bird-wings--up">
         <path
-          d="M220 160 C240 180 250 220 240 270 C235 295 215 320 200 340 C185 320 165 295 160 270 C150 220 160 180 180 160 C190 148 210 148 220 160Z"
+          d="M 175,118 C 185,76 215,42 260,26 C 230,62 198,92 175,118Z"
           fill="var(--gold)"
+          opacity="0.82"
         />
-        {/* Right wing — swept back elegantly */}
         <path
-          d="M240 200 C280 170 330 150 370 160 C340 180 290 210 250 230Z"
+          d="M 175,118 C 156,74 128,42 86,28 C 114,66 148,94 175,118Z"
           fill="var(--gold)"
-          opacity="0.7"
+          opacity="0.68"
         />
-        {/* Left wing */}
-        <path
-          d="M160 200 C120 170 70 150 30 160 C60 180 110 210 150 230Z"
-          fill="var(--gold)"
-          opacity="0.7"
-        />
-        {/* Long beak */}
-        <path
-          d="M200 155 L200 100 L203 155Z"
-          fill="var(--gold)"
-          opacity="0.8"
-        />
-        {/* Tail feathers */}
-        <path
-          d="M200 340 C190 370 180 410 170 440 C185 420 200 400 200 380 C200 400 215 420 230 440 C220 410 210 370 200 340Z"
-          fill="var(--gold)"
-          opacity="0.6"
-        />
-        {/* Eye */}
-        <circle cx="193" cy="168" r="4" fill="var(--vermillion)" opacity="0.6" />
       </g>
+
+      {/* Wings — DOWN beat */}
+      <g className="bird-wings bird-wings--down">
+        <path
+          d="M 175,152 C 185,194 215,222 258,236 C 228,202 198,172 175,152Z"
+          fill="var(--gold)"
+          opacity="0.82"
+        />
+        <path
+          d="M 175,152 C 156,194 128,218 84,230 C 112,196 148,170 175,152Z"
+          fill="var(--gold)"
+          opacity="0.68"
+        />
+      </g>
+
+      {/* Body */}
+      <path
+        d="M 98,126 C 90,110 96,92 116,87 C 145,80 185,89 222,102 C 258,115 276,134 273,154 C 270,172 248,180 214,180 C 174,180 128,166 100,146 C 88,137 94,130 98,126Z"
+        fill="var(--gold)"
+      />
+
+      {/* Beak — needle-sharp like a katana blade */}
+      <path
+        d="M 80,119 L 15,123 L 15,130 L 80,128Z"
+        fill="var(--gold)"
+        opacity="0.92"
+      />
+
+      {/* Tail feathers */}
+      <path d="M 271,138 C 310,120 338,114 360,118" stroke="var(--gold)" strokeWidth="4.5" strokeLinecap="round" fill="none" opacity="0.78"/>
+      <path d="M 271,149 C 312,147 341,149 361,153" stroke="var(--gold)" strokeWidth="4"   strokeLinecap="round" fill="none" opacity="0.68"/>
+      <path d="M 271,161 C 308,174 334,180 356,177" stroke="var(--gold)" strokeWidth="3.5" strokeLinecap="round" fill="none" opacity="0.58"/>
+
+      {/* Eye */}
+      <circle cx="98"   cy="117"   r="5.5" fill="var(--vermillion)" opacity="0.95"/>
+      <circle cx="96.5" cy="115.5" r="2.2" fill="rgba(250,246,240,0.75)"/>
     </svg>
   )
 }
