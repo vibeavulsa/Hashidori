@@ -67,13 +67,12 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  animation: ensoRotate 20s linear infinite;
+  animation: ensoRotate 24s linear infinite;
 }
 
 @keyframes ensoRotate {
-  0%   { transform: rotate(0deg)   scale(1); }
-  50%  { transform: rotate(180deg) scale(1.02); }
-  100% { transform: rotate(360deg) scale(1); }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 .about-portrait-badge {
