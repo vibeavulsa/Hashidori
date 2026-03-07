@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import useScrollReveal from '../hooks/useScrollReveal'
 import './Gallery.css'
 
 const categories = ['Todos', 'Dragão', 'Koi', 'Flores', 'Geométrico', 'Gueixa']
@@ -89,6 +90,9 @@ const works = [
 
 export default function Gallery() {
   const [active, setActive] = useState('Todos')
+  const headerRef  = useScrollReveal()
+  const filtersRef = useScrollReveal()
+  const gridRef    = useScrollReveal()
 
   const filtered = active === 'Todos' ? works : works.filter(w => w.category === active)
 
@@ -96,7 +100,7 @@ export default function Gallery() {
     <section id="portifolio" className="gallery">
       <div className="gallery-container">
         {/* Header */}
-        <div className="gallery-header">
+        <div ref={headerRef} className="gallery-header reveal">
           <p className="section-label">Trabalhos</p>
           <h2 className="section-heading gallery-heading">
             Portifólio<br />
@@ -105,7 +109,7 @@ export default function Gallery() {
         </div>
 
         {/* Filter tabs — CSS glassmorphism */}
-        <div className="gallery-filters">
+        <div ref={filtersRef} className="gallery-filters reveal">
           {categories.map(cat => (
             <button
               key={cat}
@@ -118,7 +122,7 @@ export default function Gallery() {
         </div>
 
         {/* Grid */}
-        <div className="gallery-grid">
+        <div ref={gridRef} className="gallery-grid reveal">
           {filtered.map(work => (
             <GalleryCard key={work.id} work={work} />
           ))}

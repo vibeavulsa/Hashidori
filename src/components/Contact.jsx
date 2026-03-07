@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import useScrollReveal from '../hooks/useScrollReveal'
 import './Contact.css'
 
 const styleOptions = ['Tradicional Japonês', 'Neo-Tradicional', 'Blackwork', 'Realismo', 'Geométrico', 'Outro']
@@ -24,11 +25,14 @@ export default function Contact() {
     setForm({ name: '', contact: '', style: '', message: '' })
   }
 
+  const infoRef = useScrollReveal()
+  const formRef = useScrollReveal()
+
   return (
     <section id="contato" className="contact">
       <div className="contact-container">
         {/* Info side */}
-        <div className="contact-info">
+        <div ref={infoRef} className="contact-info reveal reveal-left">
           <p className="section-label">Contato</p>
 
           <h2 className="section-heading contact-heading">
@@ -61,7 +65,7 @@ export default function Contact() {
         </div>
 
         {/* Form side — CSS glassmorphism */}
-        <div className="contact-form-wrap">
+        <div ref={formRef} className="contact-form-wrap reveal reveal-right">
           <div className="contact-glass-panel glass-panel">
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
               <h3 className="form-title">Agendar Consulta</h3>

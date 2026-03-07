@@ -89,15 +89,16 @@
 .gallery-card {
   border-radius: 18px;
   overflow: hidden;
-  transition: transform 0.35s var(--ease), border-color 0.35s;
+  transition: transform 0.4s var(--ease), border-color 0.4s, box-shadow 0.4s;
   cursor: pointer;
   position: relative;
 }
 
 .gallery-card:hover,
 .gallery-card.hovered {
-  transform: translateY(-4px);
-  border-color: rgba(245, 239, 230, 0.12);
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(201, 168, 76, 0.25);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(201, 168, 76, 0.12);
 }
 
 .card-visual {
@@ -117,16 +118,16 @@
 .card-kanji-bg {
   font-family: var(--font-japanese);
   font-size: 10rem;
-  color: rgba(255,255,255,0.03);
+  color: rgba(255,255,255,0.04);
   pointer-events: none;
   user-select: none;
   line-height: 1;
-  transition: transform 0.6s var(--ease), opacity 0.6s;
+  transition: transform 0.5s var(--ease), color 0.5s;
 }
 
 .gallery-card.hovered .card-kanji-bg {
-  transform: scale(1.08);
-  opacity: 1;
+  transform: scale(1.12) rotate(-5deg);
+  color: rgba(255,255,255,0.07);
 }
 
 /* Hover overlay */
@@ -197,10 +198,14 @@
   border: none;
   border-radius: 999px;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.3s;
 }
 
-.gallery-cta-btn:hover { opacity: 0.88; }
+.gallery-cta-btn:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(192, 57, 43, 0.4);
+}
 
 @media (max-width: 900px) {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
