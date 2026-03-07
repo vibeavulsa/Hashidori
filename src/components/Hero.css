@@ -49,7 +49,7 @@
 .hero-deco--1 { font-size: 22rem; top: -5rem; right: -4rem; }
 .hero-deco--2 { font-size: 12rem; bottom: 4%;  left: -3rem; animation: shimmer 8s ease-in-out infinite; }
 
-/* Hummingbirds */
+/* ── Hummingbird wrappers ─────────────────────────────────────────────────── */
 .hero-bird-wrap {
   position: absolute;
   pointer-events: none;
@@ -57,70 +57,86 @@
 }
 
 .hero-bird-wrap--1 {
-  width: 310px;
-  right: 3%;
+  width: 320px;
+  right: 2%;
   top: 50%;
-  animation: birdHover1 4.2s ease-in-out infinite;
+  animation: birdFloat1 5s ease-in-out infinite;
 }
 
 .hero-bird-wrap--2 {
-  width: 165px;
-  right: 16%;
-  bottom: 16%;
-  animation: birdHover2 3.8s ease-in-out infinite;
-  animation-delay: -1.9s;
+  width: 180px;
+  right: 15%;
+  bottom: 14%;
+  animation: birdFloat2 4.2s ease-in-out infinite;
+  animation-delay: -2.1s;
 }
 
+/* The actual SVG element */
 .hero-bird-wrap .bird-svg {
   display: block;
   width: 100%;
-  opacity: 0.20;
-  will-change: transform;
+  color: var(--gold);          /* drives fill="currentColor" */
+  opacity: 0.22;
+  will-change: transform, opacity;
+  animation: birdPulse 3.6s ease-in-out infinite;
+  transform-origin: center;
 }
 
 .hero-bird-wrap--2 .bird-svg {
-  opacity: 0.13;
+  opacity: 0.14;
+  animation: birdPulse 3.6s ease-in-out infinite;
+  animation-delay: -1.8s;
 }
 
-/* Wing beat — katana-speed flutter */
-.bird-wings--up {
-  animation: wingToggle 0.12s steps(1) infinite;
-}
-
-.bird-wings--down {
-  animation: wingToggle 0.12s steps(1) infinite reverse;
-}
-
-@keyframes wingToggle {
-  0%, 49.9% { opacity: 1; }
-  50%, 100%  { opacity: 0; }
-}
-
-/* Katana-strike dart: instant thrust, ease-out return */
-.hero-bird-wrap--1 .bird-svg {
-  animation: birdStrike 5.5s linear infinite;
-}
-
+/* hummingbird 2 faces the opposite direction — mirror it */
 .hero-bird-wrap--2 .bird-svg {
-  animation: birdStrike 5.5s linear infinite;
-  animation-delay: -2.75s;
+  transform: scaleX(-1);
 }
 
-@keyframes birdHover1 {
+/* ── Bird keyframes ───────────────────────────────────────────────────────── */
+
+/* Gentle hover float — large bird */
+@keyframes birdFloat1 {
   0%, 100% { transform: translateY(-50%); }
-  50%      { transform: translateY(calc(-50% - 14px)); }
+  30%       { transform: translateY(calc(-50% - 16px)) rotate(-1.5deg); }
+  65%       { transform: translateY(calc(-50% + 8px))  rotate(1deg); }
 }
 
-@keyframes birdHover2 {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
+/* Gentle hover float — small bird */
+@keyframes birdFloat2 {
+  0%, 100% { transform: scaleX(-1) translateY(0); }
+  40%       { transform: scaleX(-1) translateY(-12px) rotate(-2deg); }
+  75%       { transform: scaleX(-1) translateY(4px)   rotate(1.5deg); }
 }
 
+/* Wing-beat illusion — subtle scale pulse on the whole silhouette */
+@keyframes birdPulse {
+  0%, 100% { transform-origin: 30% 50%; transform: scaleX(1)    scaleY(1);    }
+  25%       { transform-origin: 30% 50%; transform: scaleX(1.04) scaleY(0.96); }
+  50%       { transform-origin: 30% 50%; transform: scaleX(0.97) scaleY(1.03); }
+  75%       { transform-origin: 30% 50%; transform: scaleX(1.03) scaleY(0.97); }
+}
+
+/* Sudden forward strike — katana speed */
 @keyframes birdStrike {
-  0%, 87%  { transform: translateX(0); }
-  88%      { transform: translateX(-44px); animation-timing-function: ease-out; }
-  94%      { transform: translateX(0); }
-  100%     { transform: translateX(0); }
+  0%, 82%  { translate: 0 0; }
+  83%      { translate: -50px 0; }
+  90%      { translate: 0 0; }
+  100%     { translate: 0 0; }
+}
+
+/* Apply strike on top of float */
+.hero-bird-wrap--1 {
+  animation:
+    birdFloat1  5s   ease-in-out  infinite,
+    birdStrike  7.5s ease-in-out  infinite;
+}
+
+.hero-bird-wrap--2 {
+  animation:
+    birdFloat2  4.2s ease-in-out  infinite,
+    birdStrike  7.5s ease-in-out  infinite;
+  animation-delay: -2.1s, -3.75s;
 }
 
 /* Content */
@@ -197,7 +213,7 @@
   border: none;
   cursor: pointer;
   border-radius: 999px;
-  transition: transform 0.2s, opacity 0.2s, background 0.3s;
+  transition: transform 0.2s, opacity 0.2s, background 0.3s, box-shadow 0.3s;
   white-space: nowrap;
 }
 
@@ -211,6 +227,8 @@
 
 .hero-btn--primary:hover {
   opacity: 0.9;
+  box-shadow: 0 0 24px rgba(192, 57, 43, 0.45);
+  transform: translateY(-2px);
 }
 
 .hero-btn--secondary {
@@ -224,7 +242,9 @@
 
 .hero-btn--secondary:hover {
   background: rgba(245, 239, 230, 0.08);
-  border-color: rgba(245, 239, 230, 0.15);
+  border-color: rgba(201, 168, 76, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.12);
 }
 
 /* Stats — glassmorphism */
@@ -236,6 +256,12 @@
   position: relative;
   padding: 24px 40px;
   border-radius: 20px;
+  animation: statsReveal 1.2s var(--ease) 0.6s both;
+}
+
+@keyframes statsReveal {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .hero-stat {

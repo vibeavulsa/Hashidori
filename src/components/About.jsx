@@ -1,3 +1,4 @@
+import useScrollReveal from '../hooks/useScrollReveal'
 import './About.css'
 
 const values = [
@@ -24,11 +25,15 @@ const values = [
 ]
 
 export default function About() {
+  const visualRef  = useScrollReveal()
+  const textRef    = useScrollReveal()
+  const valuesRef  = useScrollReveal()
+
   return (
     <section id="sobre" className="about">
       <div className="about-container">
         {/* Left: portrait / illustration side */}
-        <div className="about-visual">
+        <div ref={visualRef} className="about-visual reveal reveal-left">
           <div className="about-portrait-frame">
             <div className="about-portrait-inner">
               <EnsoIllustration />
@@ -41,7 +46,7 @@ export default function About() {
         </div>
 
         {/* Right: text */}
-        <div className="about-text">
+        <div ref={textRef} className="about-text reveal reveal-right">
           <p className="section-label">Sobre o artista</p>
 
           <h2 className="section-heading about-heading">
@@ -64,7 +69,7 @@ export default function About() {
           </p>
 
           {/* Values grid */}
-          <div className="about-values">
+          <div ref={valuesRef} className="about-values reveal-stagger">
             {values.map(v => (
               <div key={v.kanji} className="value-card glass-panel">
                 <span className="value-kanji">{v.kanji}</span>
